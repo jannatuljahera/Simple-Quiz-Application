@@ -23,7 +23,7 @@
                </image>
             </ImageView>
             <Label styleClass="main-title" text="Welcome" />
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="361.0" styleClass="subtitle" />
+            <Label fx:id="lblError" alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="361.0" styleClass="subtitle" />
             <TextField fx:id="tfUsername" promptText="Username" styleClass="form-input" />
             <PasswordField fx:id="pfPass" promptText="Password" styleClass="form-input" />
             <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#Login" styleClass="signup-button" text="Log in" />

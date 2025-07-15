@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane stylesheets="@Jahera.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="simplequizapplication.AdminDashboardController">
+
+    <!-- Top Navigation Bar -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: #f57f17;">
+            <Label style="-fx-text-fill: white; -fx-padding: 15;" styleClass="main-title" text="  Simple Quiz Application - Admin Dashboard" />
+        </HBox>
+    </top>
+
+    <!-- Center Content -->
+    <center>
+        <VBox alignment="CENTER" maxHeight="500" maxWidth="450" prefHeight="400.0" spacing="20" styleClass="glass-background" BorderPane.alignment="CENTER">
+            <Label fx:id="welcomeLabel" styleClass="main-title" text="Welcome, Admin!" />
+
+            <Button fx:id="manageQuizzesBtn" onAction="#ManageQuiz" styleClass="signup-button" text="Manage Quizzes" />
+            <Button fx:id="viewResultsBtn" onAction="#ViewResults" styleClass="signup-button" text="View Quiz Results" />
+            <Button fx:id="manageUsersBtn" onAction="#ManageUsers" styleClass="signup-button" text="Manage Users" />
+            <Button fx:id="createUserBtn" onAction="#CreateUser" styleClass="signup-button" text="Create New User" />
+            <Button fx:id="logoutBtn" onAction="#Logout" styleClass="signup-button" text="Logout" />
+        </VBox>
+    </center>
+</BorderPane>

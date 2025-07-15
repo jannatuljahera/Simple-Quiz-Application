@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane stylesheets="@Jahera.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" fx:controller="simplequizapplication.UserDashboardController">
+
+    <!-- Top Navigation Bar -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: #fbc02d;">
+            <Label style="-fx-text-fill: white; -fx-padding: 15;" styleClass="main-title" text="  Simple Quiz Application - User Dashboard" />
+        </HBox>
+    </top>
+
+    <!-- Center Content -->
+    <center>
+        <VBox alignment="CENTER" maxHeight="400.0" maxWidth="400.0" prefHeight="400.0" spacing="15.0" styleClass="glass-background" BorderPane.alignment="TOP_CENTER">
+         <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../image/Quiz%20Logo.png" />
+            </image>
+         </ImageView>
+            <Label fx:id="welcomeLabel" styleClass="main-title" text="Welcome, User!" />
+
+            <Button fx:id="startQuizBtn" onAction="#StartQuiz" styleClass="signup-button" text="Start Quiz" />
+            <Button fx:id="viewScoresBtn" onAction="#MyScore" styleClass="signup-button" text="View My Scores" />
+            <Button fx:id="profileBtn" onAction="#MyProfie" styleClass="signup-button" text="My Profile" />
+            <Button fx:id="logoutBtn" onAction="#Logout" styleClass="signup-button" text="Logout" />
+        </VBox>
+    </center>
+</BorderPane>
