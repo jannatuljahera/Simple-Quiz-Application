@@ -41,6 +41,11 @@ public class LoginController implements Initializable {
     @FXML
     private Label lblError;
 
+    private String username;
+    public void setUsername(String username) {
+    this.username = username;
+}
+
     /**
      * Initializes the controller class.
      */
@@ -92,7 +97,7 @@ public class LoginController implements Initializable {
 
 
                             UserDashboardController controller = loader.getController();
-                            controller.setPatientUsername(username);
+                            controller.setPlayerUsername(username);
 
 
                             Stage stage = (Stage) lblError.getScene().getWindow(); 

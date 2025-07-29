@@ -1,14 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package simplequizapplication;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,11 +15,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author user
- */
 public class UserDashboardController implements Initializable {
 
     @FXML
@@ -34,63 +24,70 @@ public class UserDashboardController implements Initializable {
     @FXML
     private Button viewScoresBtn;
     @FXML
-    private Button profileBtn;
-    @FXML
     private Button logoutBtn;
-    
-    private String patientUsername;
-    
-    private int patient_id;
-    public void setPatientId(int id) {
-    this.patient_id = id;
+
+    // You can pass the username from login to display the user's name
+    private String username;
+    private String playerUsername;
+
+    public void setPlayerUsername(String username) {
+        this.playerUsername = username;
+        System.out.println("Logged in as: " + playerUsername);
+        // You can also call methods to initialize dashboard data here
     }
 
-    public void setPatientUsername(String username) {
-        this.patientUsername = username;
-        try (Connection conn = ConnectionDB.getConnection()) {
-            String sql = "SELECT id FROM users WHERE username = ?";
-            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                stmt.setString(1, username);
-                ResultSet rs = stmt.executeQuery();
-                if (rs.next()) {
-                    this.patient_id = rs.getInt("id");
-                }
-            }
+    public void setUsername(String username) {
+        this.username = username;
+        welcomeLabel.setText("Welcome, " + username + "!");
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // Optional: Set default welcome text
+        welcomeLabel.setText("Welcome, User!");
+    }
+    
+    public void saveResult(String username, int score, int total) {
+        String query = "INSERT INTO results (username, score, total) VALUES (?, ?, ?)";
+
+        try (Connection conn = ConnectionDB.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, username);
+            stmt.setInt(2, score);
+            stmt.setInt(3, total);
+
+            stmt.executeUpdate();
+            System.out.println("Result saved for user: " + username);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-
     @FXML
-    private void StartQuiz(ActionEvent event) {
+    private void StartQuiz(ActionEvent event) throws IOException {
+        loadScene("StartQuiz.fxml", "Start Quiz");
     }
 
     @FXML
-    private void MyScore(ActionEvent event) {
-    }
-
-    @FXML
-    private void MyProfie(ActionEvent event) {
+    private void MyScore(ActionEvent event) throws IOException {
+        loadScene("ViewScore.fxml", "My Scores");
     }
 
     @FXML
     private void Logout(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+        loadScene("Login.fxml", "Login");
+        ((Stage) logoutBtn.getScene().getWindow()).close(); // Close dashboard
+    }
+
+    private void loadScene(String fxmlFile, String title) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
         Parent root = loader.load();
         Stage stage = new Stage();
+        stage.setTitle(title);
         stage.setScene(new Scene(root));
-        stage.setTitle("Login Form");
         stage.show();
-        ((Stage) logoutBtn.getScene().getWindow()).close();
     }
-    
 }

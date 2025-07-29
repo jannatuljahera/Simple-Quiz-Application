@@ -23,7 +23,6 @@
             <Button fx:id="manageQuizzesBtn" onAction="#ManageQuiz" styleClass="signup-button" text="Manage Quizzes" />
             <Button fx:id="viewResultsBtn" onAction="#ViewResults" styleClass="signup-button" text="View Quiz Results" />
             <Button fx:id="manageUsersBtn" onAction="#ManageUsers" styleClass="signup-button" text="Manage Users" />
-            <Button fx:id="createUserBtn" onAction="#CreateUser" styleClass="signup-button" text="Create New User" />
             <Button fx:id="logoutBtn" onAction="#Logout" styleClass="signup-button" text="Logout" />
         </VBox>
     </center>

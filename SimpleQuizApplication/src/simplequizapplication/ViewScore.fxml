@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@Jahera.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="simplequizapplication.ViewScoreController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="15.0">
+         <children>
+            <TableView fx:id="resultTable" prefHeight="315.0" prefWidth="600.0">
+               <columns>
+                  <TableColumn fx:id="colName" prefWidth="188.0" text="Name" />
+                  <TableColumn fx:id="colScore" prefWidth="211.3333740234375" text="Total Score" />
+                  <TableColumn fx:id="colDate" prefWidth="199.33331298828125" text="Date" />
+               </columns>
+            </TableView>
+            <HBox alignment="CENTER" prefHeight="35.0" prefWidth="600.0" spacing="55.0">
+               <children>
+                  <Button fx:id="backBtn" mnemonicParsing="false" onAction="#Back" prefHeight="40.0" prefWidth="111.0" styleClass="signup-button" text="Back" />
+                  <Button fx:id="playBtn" mnemonicParsing="false" onAction="#PlayAgain" prefHeight="40.0" prefWidth="111.0" styleClass="signup-button" text="Play Again" />
+                  <Button fx:id="homeBtn" mnemonicParsing="false" onAction="#Home" prefHeight="40.0" prefWidth="111.0" styleClass="signup-button" text="Home" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

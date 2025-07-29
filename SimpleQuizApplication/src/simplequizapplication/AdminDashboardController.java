@@ -1,75 +1,62 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package simplequizapplication;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 
-/**
- * FXML Controller class
- *
- * @author user
- */
-public class AdminDashboardController implements Initializable {
+public class AdminDashboardController {
 
     @FXML
     private Label welcomeLabel;
+
     @FXML
     private Button manageQuizzesBtn;
+
     @FXML
     private Button viewResultsBtn;
+
     @FXML
     private Button manageUsersBtn;
-    @FXML
-    private Button createUserBtn;
+
     @FXML
     private Button logoutBtn;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-
+    // Handle Manage Quiz Button
     @FXML
-    private void ManageQuiz(ActionEvent event) {
+    void ManageQuiz(ActionEvent event) throws IOException {
+        switchScene(event, "ManageQuiz.fxml");
     }
 
+    // Handle View Results Button
     @FXML
-    private void ViewResults(ActionEvent event) {
+    void ViewResults(ActionEvent event) throws IOException {
+        switchScene(event, "ViewResult.fxml");
     }
 
+    // Handle Manage Users Button
     @FXML
-    private void ManageUsers(ActionEvent event) {
+    void ManageUsers(ActionEvent event) throws IOException {
+        switchScene(event, "ManageUsers.fxml");
     }
 
+    // Handle Logout Button
     @FXML
-    private void CreateUser(ActionEvent event) {
+    void Logout(ActionEvent event) throws IOException {
+        switchScene(event, "Login.fxml");
     }
 
-    @FXML
-    private void Logout(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
-        Parent root = loader.load();
-        Stage stage = new Stage();
+    // Reusable method to switch scenes
+    private void switchScene(ActionEvent event, String fxmlFile) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
-        stage.setTitle("Login Form");
         stage.show();
-        ((Stage) logoutBtn.getScene().getWindow()).close();
     }
-    
 }
